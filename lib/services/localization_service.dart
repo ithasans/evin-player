@@ -71,6 +71,9 @@ class L10n {
       'drawer_settings_sub': 'الإعدادات واللغة ومساحة التخزين',
       'drawer_footer': 'إهداء لكافة محبي الفنان في كل العالم',
       'downloading_album': 'جاري تنزيل مسارات الألبوم في الخلفية...',
+      'tribute_title': 'إهداء وتكريم إلى الأستاذ الفاضل حبيب أوشانا',
+      'tribute_caption': 'تخليداً للذكرى العطرة ولمسيرة فنان الأمة الخالد إيفين أغاسي (1968 - 2017)، وتقديراً للجهود المخلصة في حفظ التراث الموسيقي للأجيال القادمة.',
+      'zoom_hint': 'يمكنك تكبير الصورة باللمس وقراءة كامل تفاصيل نص الإهداء',
     },
     'de': {
       'app_title': 'Evin Agassi Musik',
@@ -129,6 +132,9 @@ class L10n {
       'drawer_settings_sub': 'Einstellungen, Sprache & Speicher',
       'drawer_footer': 'Gewidmet allen Fans weltweit',
       'downloading_album': 'Albumtitel werden im Hintergrund heruntergeladen...',
+      'tribute_title': 'Widmung & Ehrung an Herrn Habib Oshana',
+      'tribute_caption': 'Zu Ehren des unvergesslichen Andenkens und musikalischen Erbes von Evin Agassi (1968 - 2017) und in Würdigung treuer Verdienste um die Bewahrung des Kulturguts.',
+      'zoom_hint': 'Tippen oder zoomen Sie, um den vollständigen Widmungstext deutlich zu lesen',
     },
     'en': {
       'app_title': 'Evin Agassi Music',
@@ -187,6 +193,9 @@ class L10n {
       'drawer_settings_sub': 'Settings, Language & Storage',
       'drawer_footer': 'Dedicated to all fans around the world',
       'downloading_album': 'Downloading album tracks in background...',
+      'tribute_title': 'Special Dedication & Tribute to Mr. Habib Oshana',
+      'tribute_caption': 'In honor of the everlasting memory and artistic legacy of the late legend Evin Agassi (1968 - 2017), and in appreciation of faithful dedication to preserving Assyrian cultural heritage.',
+      'zoom_hint': 'Pinch to zoom the image to read the full dedication text clearly',
     },
   };
 

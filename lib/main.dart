@@ -5,7 +5,7 @@ import 'services/storage_service.dart';
 import 'services/download_service.dart';
 import 'providers/music_provider.dart';
 import 'theme/app_theme.dart';
-import 'pages/greeting_page.dart';
+import 'pages/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -65,7 +65,7 @@ class EvinPlayerApp extends StatelessWidget {
           child: child ?? const SizedBox.shrink(),
         );
       },
-      home: const GreetingPage(),
+      home: const HomePage(),
     );
   }
 }

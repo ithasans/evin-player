@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/music_provider.dart';
-import 'home_page.dart';
 
 class GreetingPage extends StatelessWidget {
   const GreetingPage({super.key});
@@ -9,115 +8,66 @@ class GreetingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final music = context.watch<MusicProvider>();
-    final theme = Theme.of(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          // Background Image
-          Image.asset(
-            'assets/images/greeting.jpg',
-            fit: BoxFit.cover,
+      backgroundColor: isDark ? const Color(0xFF0F0F13) : const Color(0xFFF6F8FA),
+      appBar: AppBar(
+        title: Text(
+          music.tr('drawer_greeting'),
+          style: const TextStyle(
+            letterSpacing: 2.0,
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
           ),
-
-          // Dark Gradient Vignette
-          DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.transparent,
-                  Colors.black.withAlpha(140),
-                  Colors.black.withAlpha(240),
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: const [0.3, 0.65, 1.0],
-              ),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ),
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Clean Dedication & Tribute Image - Completely Unobstructed
+                Container(
+                  constraints: BoxConstraints(
+                    maxWidth: 520,
+                    maxHeight: MediaQuery.of(context).size.height * 0.78,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withAlpha(isDark ? 100 : 35),
+                        blurRadius: 28,
+                        offset: const Offset(0, 10),
+                      ),
+                    ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: InteractiveViewer(
+                      minScale: 1.0,
+                      maxScale: 4.0,
+                      child: Image.asset(
+                        'assets/images/greeting.jpg',
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-
-          // Content
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 24),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                    decoration: BoxDecoration(
-                      color: theme.primaryColor.withAlpha(200),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Text(
-                      music.tr('official_archive'),
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 11,
-                        letterSpacing: 1.5,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  const Text(
-                    'Evin Agassi',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 0.5,
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    music.tr('artist_subtitle'),
-                    style: TextStyle(
-                      color: Colors.white.withAlpha(200),
-                      fontSize: 15,
-                      height: 1.4,
-                    ),
-                  ),
-                  const SizedBox(height: 32),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 56,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.primaryColor,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        elevation: 8,
-                        shadowColor: theme.primaryColor.withAlpha(150),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (_) => const HomePage()),
-                        );
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            music.tr('start_listening'),
-                            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(width: 8),
-                          const Icon(Icons.arrow_forward_rounded),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                ],
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
