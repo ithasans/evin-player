@@ -10,6 +10,7 @@ import '../models/album.dart';
 import '../services/storage_service.dart';
 import '../services/download_service.dart';
 import '../services/localization_service.dart';
+import '../services/native_media_notification.dart';
 
 enum RepeatMode { off, all, one }
 
@@ -106,9 +107,37 @@ class MusicProvider with ChangeNotifier {
     _themeMode = savedTheme == 'light' ? ThemeMode.light : ThemeMode.dark;
     _languageCode = storageService.getLanguageCode();
 
-    // 2. Setup Audio Player listeners
+    // 2. Configure global audio context for uninterrupted background playback
+    AudioPlayer.global.setAudioContext(
+      AudioContext(
+        android: const AudioContextAndroid(
+          isSpeakerphoneOn: false,
+          stayAwake: true,
+          contentType: AndroidContentType.music,
+          usageType: AndroidUsageType.media,
+          audioFocus: AndroidAudioFocus.gain,
+        ),
+        iOS: AudioContextIOS(
+          category: AVAudioSessionCategory.playback,
+          options: {
+            AVAudioSessionOptions.defaultToSpeaker,
+          },
+        ),
+      ),
+    );
+
+    // 3. Initialize native media notification callbacks
+    NativeMediaNotification.init(
+      playCallback: () => togglePlayPause(),
+      pauseCallback: () => togglePlayPause(),
+      nextCallback: () => playNext(),
+      prevCallback: () => playPrevious(),
+    );
+
+    // 4. Setup Audio Player listeners
     _player.onPlayerStateChanged.listen((state) {
       _playerState = state;
+      NativeMediaNotification.updatePlayback(isPlaying: state == PlayerState.playing);
       notifyListeners();
     });
 
@@ -128,7 +157,7 @@ class MusicProvider with ChangeNotifier {
       _handleSongFinished();
     });
 
-    // 3. Load catalog data
+    // 5. Load catalog data
     await _loadCatalogData();
 
     _isLoading = false;
@@ -201,6 +230,13 @@ class MusicProvider with ChangeNotifier {
     _currentIndex = _currentQueue.indexWhere((s) => s.id == song.id);
     _currentPosition = Duration.zero;
     _totalDuration = Duration(seconds: song.durationSeconds);
+
+    NativeMediaNotification.show(
+      title: song.songName,
+      artist: '${song.artistName} • ${song.albumName}',
+      isPlaying: true,
+    );
+
     notifyListeners();
 
     try {

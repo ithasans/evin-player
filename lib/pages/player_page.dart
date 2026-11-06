@@ -52,14 +52,14 @@ class _PlayerPageState extends State<PlayerPage> with SingleTickerProviderStateM
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
-              const Text(
-                'مؤقت النوم (Sleep Timer)',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              Text(
+                music.tr('sleep_timer_title'),
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               const SizedBox(height: 8),
               if (music.hasActiveSleepTimer)
                 Text(
-                  'المتبقي: ${music.sleepMinutesRemaining} دقيقة',
+                  '${music.tr('sleep_timer_remaining_prefix')} ${music.sleepMinutesRemaining} ${music.tr('minutes')}',
                   style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.w600),
                 ),
               const SizedBox(height: 16),
@@ -68,10 +68,10 @@ class _PlayerPageState extends State<PlayerPage> with SingleTickerProviderStateM
                 runSpacing: 10,
                 alignment: WrapAlignment.center,
                 children: [
-                  _timerOption(ctx, music, 15, '15 دقيقة'),
-                  _timerOption(ctx, music, 30, '30 دقيقة'),
-                  _timerOption(ctx, music, 45, '45 دقيقة'),
-                  _timerOption(ctx, music, 60, 'ساعة واحدة'),
+                  _timerOption(ctx, music, 15, music.tr('sleep_timer_15m')),
+                  _timerOption(ctx, music, 30, music.tr('sleep_timer_30m')),
+                  _timerOption(ctx, music, 45, music.tr('sleep_timer_45m')),
+                  _timerOption(ctx, music, 60, music.tr('sleep_timer_60m')),
                 ],
               ),
               const SizedBox(height: 16),
@@ -82,7 +82,7 @@ class _PlayerPageState extends State<PlayerPage> with SingleTickerProviderStateM
                     foregroundColor: Colors.redAccent,
                   ),
                   icon: const Icon(Icons.close),
-                  label: const Text('إلغاء المؤقت'),
+                  label: Text(music.tr('cancel_timer')),
                   onPressed: () {
                     music.cancelSleepTimer();
                     Navigator.pop(ctx);
@@ -105,7 +105,7 @@ class _PlayerPageState extends State<PlayerPage> with SingleTickerProviderStateM
         music.setSleepTimer(minutes);
         Navigator.pop(ctx);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('تم ضبط مؤقت النوم على $label')),
+          SnackBar(content: Text('${music.tr('sleep_timer_set_msg')} $label')),
         );
       },
       child: Text(label),
@@ -118,8 +118,8 @@ class _PlayerPageState extends State<PlayerPage> with SingleTickerProviderStateM
     final currentSong = music.currentSong;
 
     if (currentSong == null) {
-      return const Scaffold(
-        body: Center(child: Text('No track selected')),
+      return Scaffold(
+        body: Center(child: Text(music.tr('no_track_selected'))),
       );
     }
 
@@ -155,7 +155,7 @@ class _PlayerPageState extends State<PlayerPage> with SingleTickerProviderStateM
                   Column(
                     children: [
                       Text(
-                        'NOW PLAYING',
+                        music.tr('now_playing'),
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w700,
@@ -163,11 +163,15 @@ class _PlayerPageState extends State<PlayerPage> with SingleTickerProviderStateM
                           color: isDark ? Colors.grey[400] : Colors.grey[600],
                         ),
                       ),
-                      Text(
-                        currentSong.albumName,
-                        style: const TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.bold,
+                      const SizedBox(height: 2),
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          currentSong.albumName,
+                          style: const TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],
@@ -233,14 +237,16 @@ class _PlayerPageState extends State<PlayerPage> with SingleTickerProviderStateM
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          currentSong.songName,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 0.3,
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: AlignmentDirectional.centerStart,
+                          child: Text(
+                            currentSong.songName,
+                            style: const TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 0.3,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 4),

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../providers/music_provider.dart';
 import '../pages/greeting_page.dart';
 import '../pages/settings_page.dart';
+import '../pages/developer_page.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -110,6 +111,20 @@ class MyDrawer extends StatelessWidget {
                 Navigator.pop(context);
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => const SettingsPage()),
+                );
+              },
+            ),
+
+            // Item 4: DEVELOPER (حول المطور)
+            _buildDrawerTile(
+              context: context,
+              title: music.tr('drawer_developer'),
+              subtitle: music.tr('drawer_developer_sub'),
+              icon: Icons.person_pin_rounded,
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const DeveloperPage()),
                 );
               },
             ),

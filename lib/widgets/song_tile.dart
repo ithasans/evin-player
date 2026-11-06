@@ -66,14 +66,16 @@ class SongTile extends StatelessWidget {
                   ),
           ),
         ),
-        title: Text(
-          song.songName,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            fontWeight: isPlayingThis ? FontWeight.bold : FontWeight.w600,
-            fontSize: 15,
-            color: isPlayingThis ? theme.primaryColor : null,
+        title: FittedBox(
+          fit: BoxFit.scaleDown,
+          alignment: AlignmentDirectional.centerStart,
+          child: Text(
+            song.songName,
+            style: TextStyle(
+              fontWeight: isPlayingThis ? FontWeight.bold : FontWeight.w600,
+              fontSize: 15,
+              color: isPlayingThis ? theme.primaryColor : null,
+            ),
           ),
         ),
         subtitle: Row(
