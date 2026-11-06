@@ -129,6 +129,19 @@ class MyDrawer extends StatelessWidget {
               },
             ),
 
+            // Item 5: EXIT APP (إغلاق التطبيق)
+            _buildDrawerTile(
+              context: context,
+              title: 'E X I T',
+              subtitle: music.tr('close_app'),
+              icon: Icons.power_settings_new_rounded,
+              iconColor: Colors.redAccent,
+              onTap: () {
+                Navigator.pop(context);
+                _confirmExit(context, music);
+              },
+            ),
+
             const Spacer(),
 
             // Footer Dedication note
@@ -165,6 +178,7 @@ class MyDrawer extends StatelessWidget {
     required String title,
     required String subtitle,
     required IconData icon,
+    Color? iconColor,
     required VoidCallback onTap,
   }) {
     final theme = Theme.of(context);
@@ -174,7 +188,7 @@ class MyDrawer extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
       child: ListTile(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        leading: Icon(icon, color: theme.primaryColor, size: 24),
+        leading: Icon(icon, color: iconColor ?? theme.primaryColor, size: 24),
         title: Text(
           title,
           style: const TextStyle(
@@ -191,6 +205,44 @@ class MyDrawer extends StatelessWidget {
           ),
         ),
         onTap: onTap,
+      ),
+    );
+  }
+
+  void _confirmExit(BuildContext context, MusicProvider music) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: Row(
+          children: [
+            const Icon(Icons.power_settings_new_rounded, color: Colors.redAccent),
+            const SizedBox(width: 10),
+            Text(music.tr('close_app_title')),
+          ],
+        ),
+        content: Text(
+          music.tr('close_app_confirm'),
+          style: const TextStyle(fontSize: 14, height: 1.4),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: Text(music.tr('cancel')),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.redAccent,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            ),
+            onPressed: () {
+              Navigator.of(ctx).pop();
+              music.exitApp();
+            },
+            child: Text(music.tr('exit')),
+          ),
+        ],
       ),
     );
   }

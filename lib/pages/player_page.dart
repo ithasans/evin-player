@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
+import '../widgets/evin_cover_image.dart';
 import '../providers/music_provider.dart';
 
 class PlayerPage extends StatefulWidget {
@@ -203,25 +203,10 @@ class _PlayerPageState extends State<PlayerPage> with SingleTickerProviderStateM
                       ),
                     ],
                   ),
-                  child: ClipRRect(
+                  child: EvinCoverImage(
+                    assetPath: currentSong.assetCoverPath,
+                    fit: BoxFit.cover,
                     borderRadius: BorderRadius.circular(32),
-                    child: currentSong.albumCoverUrl.isNotEmpty
-                        ? CachedNetworkImage(
-                            imageUrl: currentSong.albumCoverUrl,
-                            fit: BoxFit.cover,
-                            placeholder: (context, url) => Container(
-                              color: isDark ? Colors.grey[900] : Colors.grey[200],
-                              child: const Icon(Icons.album, size: 80),
-                            ),
-                            errorWidget: (context, url, error) => Image.asset(
-                              'assets/images/greeting.jpg',
-                              fit: BoxFit.cover,
-                            ),
-                          )
-                        : Image.asset(
-                            'assets/images/greeting.jpg',
-                            fit: BoxFit.cover,
-                          ),
                   ),
                 ),
               ),

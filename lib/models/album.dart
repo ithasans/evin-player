@@ -15,6 +15,19 @@ class Album {
     this.songsCount = 0,
   });
 
+  String get assetCoverPath {
+    if (coverFilename.isNotEmpty) {
+      return 'assets/covers/$coverFilename';
+    }
+    if (coverUrl.isNotEmpty) {
+      final fn = coverUrl.split('/').last;
+      if (fn.isNotEmpty) {
+        return 'assets/covers/$fn';
+      }
+    }
+    return 'assets/images/greeting.jpg';
+  }
+
   factory Album.fromJson(Map<String, dynamic> json) {
     return Album(
       id: json['id'] as String? ?? '',

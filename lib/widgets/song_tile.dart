@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'evin_cover_image.dart';
 import '../models/song.dart';
 
 class SongTile extends StatelessWidget {
@@ -42,29 +42,12 @@ class SongTile extends StatelessWidget {
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
         onTap: onTap,
-        leading: ClipRRect(
+        leading: EvinCoverImage(
+          assetPath: song.assetCoverPath,
+          width: 48,
+          height: 48,
+          fit: BoxFit.cover,
           borderRadius: BorderRadius.circular(12),
-          child: SizedBox(
-            width: 48,
-            height: 48,
-            child: song.albumCoverUrl.isNotEmpty
-                ? CachedNetworkImage(
-                    imageUrl: song.albumCoverUrl,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => Container(
-                      color: isDark ? Colors.grey[900] : Colors.grey[200],
-                      child: const Icon(Icons.music_note, size: 22),
-                    ),
-                    errorWidget: (context, url, error) => Image.asset(
-                      'assets/images/greeting.jpg',
-                      fit: BoxFit.cover,
-                    ),
-                  )
-                : Image.asset(
-                    'assets/images/greeting.jpg',
-                    fit: BoxFit.cover,
-                  ),
-          ),
         ),
         title: FittedBox(
           fit: BoxFit.scaleDown,

@@ -132,12 +132,18 @@ class MusicProvider with ChangeNotifier {
       pauseCallback: () => togglePlayPause(),
       nextCallback: () => playNext(),
       prevCallback: () => playPrevious(),
+      seekCallback: (pos) => seek(pos),
+      closeCallback: () => exitApp(),
     );
 
     // 4. Setup Audio Player listeners
     _player.onPlayerStateChanged.listen((state) {
       _playerState = state;
-      NativeMediaNotification.updatePlayback(isPlaying: state == PlayerState.playing);
+      NativeMediaNotification.updatePlayback(
+        isPlaying: state == PlayerState.playing,
+        positionMs: _currentPosition.inMilliseconds,
+        durationMs: _totalDuration.inMilliseconds,
+      );
       notifyListeners();
     });
 
@@ -233,8 +239,12 @@ class MusicProvider with ChangeNotifier {
 
     NativeMediaNotification.show(
       title: song.songName,
-      artist: '${song.artistName} • ${song.albumName}',
+      artist: song.artistName,
+      album: song.albumName,
+      coverFilename: song.coverFilename,
       isPlaying: true,
+      positionMs: _currentPosition.inMilliseconds,
+      durationMs: _totalDuration.inMilliseconds,
     );
 
     notifyListeners();
@@ -273,6 +283,24 @@ class MusicProvider with ChangeNotifier {
 
   Future<void> seek(Duration position) async {
     await _player.seek(position);
+    _currentPosition = position;
+    NativeMediaNotification.updatePlayback(
+      isPlaying: isPlaying,
+      positionMs: position.inMilliseconds,
+      durationMs: _totalDuration.inMilliseconds,
+    );
+    notifyListeners();
+  }
+
+  Future<void> exitApp() async {
+    try {
+      await _player.stop();
+    } catch (_) {}
+    _playerState = PlayerState.stopped;
+    await NativeMediaNotification.hide();
+    await NativeMediaNotification.closeApp();
+    SystemNavigator.pop();
+    exit(0);
   }
 
   Future<void> playNext() async {

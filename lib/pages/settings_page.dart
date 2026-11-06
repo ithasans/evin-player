@@ -244,7 +244,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(music.tr('app_version'), style: const TextStyle(fontSize: 13, color: Colors.grey)),
-                      const Text('2.0.0 (Global Edition)', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
+                      const Text('1.1.0 (Build 2)', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
                     ],
                   ),
                 ],

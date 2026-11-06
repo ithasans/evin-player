@@ -27,6 +27,23 @@ class Song {
     this.isFavorite = false,
   });
 
+  String get coverFilename {
+    if (albumCoverUrl.isEmpty) return '';
+    final uri = Uri.tryParse(albumCoverUrl);
+    if (uri != null && uri.pathSegments.isNotEmpty) {
+      return uri.pathSegments.last;
+    }
+    return albumCoverUrl.split('/').last;
+  }
+
+  String get assetCoverPath {
+    final fn = coverFilename;
+    if (fn.isNotEmpty) {
+      return 'assets/covers/$fn';
+    }
+    return 'assets/images/greeting.jpg';
+  }
+
   factory Song.fromJson(Map<String, dynamic> json) {
     return Song(
       id: json['id'] as String? ?? '',

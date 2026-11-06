@@ -68,6 +68,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                     floating: true,
                     pinned: true,
                     elevation: 0,
+                    centerTitle: true,
                     title: _isSearching
                         ? TextField(
                             controller: _searchCtrl,
@@ -84,7 +85,13 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                               music.setSearchQuery(val);
                             },
                           )
-                        : Text(music.tr('app_title')),
+                        : FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              music.tr('app_title'),
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
                     actions: [
                       IconButton(
                         icon: Icon(_isSearching ? Icons.close_rounded : Icons.search_rounded),
@@ -111,6 +118,11 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                             MaterialPageRoute(builder: (_) => const SettingsPage()),
                           );
                         },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.power_settings_new_rounded),
+                        tooltip: music.tr('close_app'),
+                        onPressed: () => _confirmExit(context, music),
                       ),
                     ],
                   ),
@@ -141,41 +153,56 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                         ),
                         child: Stack(
                           children: [
-                            // Artist image cutout on right
-                            Positioned(
-                              right: 0,
+                            // Artist image cutout placed directionally at the end
+                            PositionedDirectional(
+                              end: 0,
                               top: 0,
                               bottom: 0,
                               child: ClipRRect(
-                                borderRadius: const BorderRadius.horizontal(right: Radius.circular(24)),
+                                borderRadius: const BorderRadiusDirectional.horizontal(
+                                  end: Radius.circular(24),
+                                ),
                                 child: Image.asset(
                                   'assets/images/greeting.jpg',
                                   fit: BoxFit.cover,
-                                  width: 140,
+                                  width: 130,
                                 ),
                               ),
                             ),
-                            // Text & Quick Action
+                            // Text & Quick Action with safe directional padding
                             Padding(
-                              padding: const EdgeInsets.all(20),
+                              padding: const EdgeInsetsDirectional.only(
+                                start: 20,
+                                end: 140,
+                                top: 16,
+                                bottom: 16,
+                              ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(
-                                    music.tr('hero_title'),
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                                  FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      music.tr('hero_title'),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                   const SizedBox(height: 4),
-                                  Text(
-                                    '${music.allSongs.length} ${music.tr('tracks_count')} • ${music.allAlbums.length} ${music.tr('albums_count')}',
-                                    style: TextStyle(
-                                      color: Colors.white.withAlpha(220),
-                                      fontSize: 13,
+                                  FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    alignment: AlignmentDirectional.centerStart,
+                                    child: Text(
+                                      '${music.allSongs.length} ${music.tr('tracks_count')} • ${music.allAlbums.length} ${music.tr('albums_count')}',
+                                      style: TextStyle(
+                                        color: Colors.white.withAlpha(220),
+                                        fontSize: 13,
+                                      ),
                                     ),
                                   ),
                                   const SizedBox(height: 12),
@@ -212,12 +239,16 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  music.tr('albums_section'),
-                                  style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                                Expanded(
+                                  child: Text(
+                                    music.tr('albums_section'),
+                                    style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ),
+                                const SizedBox(width: 8),
                                 Text(
                                   '${music.allAlbums.length} ${music.tr('albums_count')}',
                                   style: TextStyle(fontSize: 12, color: Colors.grey[500]),
@@ -259,11 +290,26 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                         indicatorWeight: 3,
                         labelColor: theme.primaryColor,
                         unselectedLabelColor: isDark ? Colors.grey[400] : Colors.grey[600],
-                        labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                        labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
                         tabs: [
-                          Tab(text: '${music.tr('tab_all_songs')} (${music.filteredSongs.length})'),
-                          Tab(text: '${music.tr('tab_downloaded')} (${music.downloadedSongs.length})'),
-                          Tab(text: '${music.tr('tab_favorites')} (${music.favoriteSongs.length})'),
+                          Tab(
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text('${music.tr('tab_all_songs')} (${music.filteredSongs.length})'),
+                            ),
+                          ),
+                          Tab(
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text('${music.tr('tab_downloaded')} (${music.downloadedSongs.length})'),
+                            ),
+                          ),
+                          Tab(
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text('${music.tr('tab_favorites')} (${music.favoriteSongs.length})'),
+                            ),
+                          ),
                         ],
                       ),
                       isDark ? const Color(0xFF0F0F13) : const Color(0xFFF6F7F9),
@@ -371,6 +417,44 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void _confirmExit(BuildContext context, MusicProvider music) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: Row(
+          children: [
+            const Icon(Icons.power_settings_new_rounded, color: Colors.redAccent),
+            const SizedBox(width: 10),
+            Text(music.tr('close_app_title')),
+          ],
+        ),
+        content: Text(
+          music.tr('close_app_confirm'),
+          style: const TextStyle(fontSize: 14, height: 1.4),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: Text(music.tr('cancel')),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.redAccent,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            ),
+            onPressed: () {
+              Navigator.of(ctx).pop();
+              music.exitApp();
+            },
+            child: Text(music.tr('exit')),
+          ),
+        ],
       ),
     );
   }

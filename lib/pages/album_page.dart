@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import '../models/album.dart';
 import '../providers/music_provider.dart';
 import '../widgets/song_tile.dart';
+import '../widgets/evin_cover_image.dart';
 
 class AlbumPage extends StatelessWidget {
   final Album album;
@@ -39,17 +39,10 @@ class AlbumPage extends StatelessWidget {
               background: Stack(
                 fit: StackFit.expand,
                 children: [
-                  if (album.coverUrl.isNotEmpty)
-                    CachedNetworkImage(
-                      imageUrl: album.coverUrl,
-                      fit: BoxFit.cover,
-                      errorWidget: (context, url, error) => Image.asset(
-                        'assets/images/greeting.jpg',
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                  else
-                    Image.asset('assets/images/greeting.jpg', fit: BoxFit.cover),
+                  EvinCoverImage(
+                    assetPath: album.assetCoverPath,
+                    fit: BoxFit.cover,
+                  ),
                   // Gradient overlay
                   DecoratedBox(
                     decoration: BoxDecoration(

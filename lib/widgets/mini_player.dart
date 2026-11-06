@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
+import 'evin_cover_image.dart';
 import '../providers/music_provider.dart';
 import '../pages/player_page.dart';
 
@@ -79,25 +79,12 @@ class MiniPlayer extends StatelessWidget {
               child: Row(
                 children: [
                   // Album Art
-                  ClipRRect(
+                  EvinCoverImage(
+                    assetPath: currentSong.assetCoverPath,
+                    width: 44,
+                    height: 44,
+                    fit: BoxFit.cover,
                     borderRadius: BorderRadius.circular(12),
-                    child: SizedBox(
-                      width: 44,
-                      height: 44,
-                      child: currentSong.albumCoverUrl.isNotEmpty
-                          ? CachedNetworkImage(
-                              imageUrl: currentSong.albumCoverUrl,
-                              fit: BoxFit.cover,
-                              errorWidget: (context, url, error) => Image.asset(
-                                'assets/images/greeting.jpg',
-                                fit: BoxFit.cover,
-                              ),
-                            )
-                          : Image.asset(
-                              'assets/images/greeting.jpg',
-                              fit: BoxFit.cover,
-                            ),
-                    ),
                   ),
                   const SizedBox(width: 12),
 

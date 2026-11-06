@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'evin_cover_image.dart';
 import '../models/album.dart';
 
 class AlbumCard extends StatelessWidget {
@@ -28,27 +28,10 @@ class AlbumCard extends StatelessWidget {
             // Album Art
             AspectRatio(
               aspectRatio: 1,
-              child: ClipRRect(
+              child: EvinCoverImage(
+                assetPath: album.assetCoverPath,
+                fit: BoxFit.cover,
                 borderRadius: BorderRadius.circular(18),
-                child: album.coverUrl.isNotEmpty
-                    ? CachedNetworkImage(
-                        imageUrl: album.coverUrl,
-                        fit: BoxFit.cover,
-                        placeholder: (context, url) => Container(
-                          color: isDark ? Colors.grey[900] : Colors.grey[200],
-                          child: const Center(
-                            child: Icon(Icons.album_rounded, size: 40, color: Colors.grey),
-                          ),
-                        ),
-                        errorWidget: (context, url, error) => Image.asset(
-                          'assets/images/greeting.jpg',
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                    : Image.asset(
-                        'assets/images/greeting.jpg',
-                        fit: BoxFit.cover,
-                      ),
               ),
             ),
             const SizedBox(height: 8),
