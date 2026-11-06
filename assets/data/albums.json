@@ -1,0 +1,296 @@
+[
+  {
+    "id": "album_1",
+    "title": "1980Photo",
+    "year": "1980",
+    "cover_url": "https://archive.org/download/1980photo/1980photo.jpg",
+    "cover_filename": "1980photo.jpg"
+  },
+  {
+    "id": "album_2",
+    "title": "Best Songs2",
+    "year": "",
+    "cover_url": "https://archive.org/download/bestSongs2/bestSongs2.jpg",
+    "cover_filename": "bestSongs2.jpg"
+  },
+  {
+    "id": "album_3",
+    "title": "Evin2017",
+    "year": "2017",
+    "cover_url": "https://archive.org/download/evin2017/evin2017.jpg",
+    "cover_filename": "evin2017.jpg"
+  },
+  {
+    "id": "album_4",
+    "title": "Evin Agassi2006",
+    "year": "2006",
+    "cover_url": "https://archive.org/download/evinAgassi2006/evinAgassi2006.jpg",
+    "cover_filename": "evinAgassi2006.jpg"
+  },
+  {
+    "id": "album_5",
+    "title": "Happiness1998",
+    "year": "1998",
+    "cover_url": "https://archive.org/download/happiness1998_380/happiness1998_380.jpg",
+    "cover_filename": "happiness1998_380.jpg"
+  },
+  {
+    "id": "album_6",
+    "title": "Old Songs2",
+    "year": "",
+    "cover_url": "https://archive.org/download/oldSongs2/oldSongs2.jpg",
+    "cover_filename": "oldSongs2.jpg"
+  },
+  {
+    "id": "album_7",
+    "title": "Paradise1997",
+    "year": "1997",
+    "cover_url": "https://archive.org/download/paradise1997_380/paradise1997_380.jpg",
+    "cover_filename": "paradise1997_380.jpg"
+  },
+  {
+    "id": "album_8",
+    "title": "The Father",
+    "year": "",
+    "cover_url": "https://archive.org/download/the_father/the_father.png",
+    "cover_filename": "the_father.png"
+  },
+  {
+    "id": "album_9",
+    "title": "1998Fisher Man380",
+    "year": "1998",
+    "cover_url": "https://ia601602.us.archive.org/1/items/1998-fisher-man-380/1998FisherMan380.jpg",
+    "cover_filename": "1998FisherMan380.jpg"
+  },
+  {
+    "id": "album_10",
+    "title": "1996New Generation380",
+    "year": "1996",
+    "cover_url": "https://ia601603.us.archive.org/10/items/1996new-generation-380/1996newGeneration380.jpg",
+    "cover_filename": "1996newGeneration380.jpg"
+  },
+  {
+    "id": "album_11",
+    "title": "1984Btabbakh",
+    "year": "1984",
+    "cover_url": "https://ia601603.us.archive.org/25/items/1984-btabbakh/1984Btabbakh.jpg",
+    "cover_filename": "1984Btabbakh.jpg"
+  },
+  {
+    "id": "album_12",
+    "title": "1994Yestedays380",
+    "year": "1994",
+    "cover_url": "https://ia601603.us.archive.org/33/items/1994-yestedays-380/1994Yestedays380.jpg",
+    "cover_filename": "1994Yestedays380.jpg"
+  },
+  {
+    "id": "album_13",
+    "title": "1987 Mometa380",
+    "year": "1987",
+    "cover_url": "https://ia601603.us.archive.org/9/items/1987-mometa-380/1987_Mometa380.jpg",
+    "cover_filename": "1987_Mometa380.jpg"
+  },
+  {
+    "id": "album_14",
+    "title": "1985 Tomorrows Country380",
+    "year": "1985",
+    "cover_url": "https://ia601604.us.archive.org/8/items/1985-tomorrows-country-380/1985_tomorrows_country380.jpg",
+    "cover_filename": "1985_tomorrows_country380.jpg"
+  },
+  {
+    "id": "album_15",
+    "title": "1984Nostalgic",
+    "year": "1984",
+    "cover_url": "https://ia601606.us.archive.org/15/items/1984-nostalgic/1984Nostalgic.jpg",
+    "cover_filename": "1984Nostalgic.jpg"
+  },
+  {
+    "id": "album_16",
+    "title": "2016",
+    "year": "2016",
+    "cover_url": "https://ia601606.us.archive.org/32/items/2016-380/2016_380.jpg",
+    "cover_filename": "2016_380.jpg"
+  },
+  {
+    "id": "album_17",
+    "title": "1983",
+    "year": "1983",
+    "cover_url": "https://ia601606.us.archive.org/34/items/1983_20230412/1983.jpg",
+    "cover_filename": "1983.jpg"
+  },
+  {
+    "id": "album_18",
+    "title": "1975V3",
+    "year": "1975",
+    "cover_url": "https://ia601606.us.archive.org/6/items/1975-v-3/1975V3.jpg",
+    "cover_filename": "1975V3.jpg"
+  },
+  {
+    "id": "album_19",
+    "title": "2012The Circle Of Life",
+    "year": "2012",
+    "cover_url": "https://ia601608.us.archive.org/7/items/2012-the-circle-of-life-380/2012The_circle_of_life_380.jpg",
+    "cover_filename": "2012The_circle_of_life_380.jpg"
+  },
+  {
+    "id": "album_20",
+    "title": "2000Baghdad380",
+    "year": "2000",
+    "cover_url": "https://ia601609.us.archive.org/2/items/2000-baghdad-380/2000Baghdad380.jpg",
+    "cover_filename": "2000Baghdad380.jpg"
+  },
+  {
+    "id": "album_21",
+    "title": "2005Memories380",
+    "year": "2005",
+    "cover_url": "https://ia801600.us.archive.org/18/items/2005memories-380/2005memories380.jpg",
+    "cover_filename": "2005memories380.jpg"
+  },
+  {
+    "id": "album_22",
+    "title": "1981",
+    "year": "1981",
+    "cover_url": "https://ia801602.us.archive.org/22/items/1981_20230412/1981.jpg",
+    "cover_filename": "1981.jpg"
+  },
+  {
+    "id": "album_23",
+    "title": "1982Dargoushta",
+    "year": "1982",
+    "cover_url": "https://ia801605.us.archive.org/20/items/1982-dargoushta/1982Dargoushta.jpg",
+    "cover_filename": "1982Dargoushta.jpg"
+  },
+  {
+    "id": "album_24",
+    "title": "1992Gareh380",
+    "year": "1992",
+    "cover_url": "https://ia801605.us.archive.org/29/items/1992-gareh-380/1992Gareh380.jpg",
+    "cover_filename": "1992Gareh380.jpg"
+  },
+  {
+    "id": "album_25",
+    "title": "1969",
+    "year": "1969",
+    "cover_url": "https://ia801607.us.archive.org/28/items/1969_20230411/1969.jpg",
+    "cover_filename": "1969.jpg"
+  },
+  {
+    "id": "album_26",
+    "title": "1994United Nations380",
+    "year": "1994",
+    "cover_url": "https://ia801607.us.archive.org/28/items/1994-united-nations-380/1994UnitedNations380.jpg",
+    "cover_filename": "1994UnitedNations380.jpg"
+  },
+  {
+    "id": "album_27",
+    "title": "2000Letter To God380",
+    "year": "2000",
+    "cover_url": "https://ia801607.us.archive.org/3/items/2000letter-to-god-380/2000letter_to_God380.jpg",
+    "cover_filename": "2000letter_to_God380.jpg"
+  },
+  {
+    "id": "album_28",
+    "title": "2006Happiness Ii",
+    "year": "2006",
+    "cover_url": "https://ia801608.us.archive.org/13/items/2006-happiness-ii-380/2006HappinessII_380.jpg",
+    "cover_filename": "2006HappinessII_380.jpg"
+  },
+  {
+    "id": "album_29",
+    "title": "Lady Salvation Church",
+    "year": "",
+    "cover_url": "https://ia802600.us.archive.org/34/items/lady-salvation-church/Lady_salvation_church.png",
+    "cover_filename": "Lady_salvation_church.png"
+  },
+  {
+    "id": "album_30",
+    "title": "1984Habbania",
+    "year": "1984",
+    "cover_url": "https://ia802601.us.archive.org/35/items/1984-habbania/1984Habbania.jpg",
+    "cover_filename": "1984Habbania.jpg"
+  },
+  {
+    "id": "album_31",
+    "title": "1990Orzeh380",
+    "year": "1990",
+    "cover_url": "https://ia802602.us.archive.org/11/items/1990orzeh-380/1990orzeh380.jpg",
+    "cover_filename": "1990orzeh380.jpg"
+  },
+  {
+    "id": "album_32",
+    "title": "Winter1982",
+    "year": "1982",
+    "cover_url": "https://ia802609.us.archive.org/11/items/winter1982_20230412/winter1982.jpg",
+    "cover_filename": "winter1982.jpg"
+  },
+  {
+    "id": "album_33",
+    "title": "380Sama Khwara1992",
+    "year": "1992",
+    "cover_url": "https://ia902600.us.archive.org/7/items/380sama-khwara-1992/380samaKhwara1992.jpg",
+    "cover_filename": "380samaKhwara1992.jpg"
+  },
+  {
+    "id": "album_34",
+    "title": "1985 Red Zero380",
+    "year": "1985",
+    "cover_url": "https://ia902601.us.archive.org/30/items/1985-red-zero-380/1985_red_zero380.jpg",
+    "cover_filename": "1985_red_zero380.jpg"
+  },
+  {
+    "id": "album_35",
+    "title": "1975V4",
+    "year": "1975",
+    "cover_url": "https://ia902602.us.archive.org/21/items/1975-v-4_202304/1975V4.jpg",
+    "cover_filename": "1975V4.jpg"
+  },
+  {
+    "id": "album_36",
+    "title": "1989Camp380",
+    "year": "1989",
+    "cover_url": "https://ia902602.us.archive.org/23/items/1989camp-380/1989camp380.jpg",
+    "cover_filename": "1989camp380.jpg"
+  },
+  {
+    "id": "album_37",
+    "title": "1995Guardian380",
+    "year": "1995",
+    "cover_url": "https://ia902603.us.archive.org/14/items/1995-guardian-380/1995Guardian380.jpg",
+    "cover_filename": "1995Guardian380.jpg"
+  },
+  {
+    "id": "album_38",
+    "title": "1989Azaad380",
+    "year": "1989",
+    "cover_url": "https://ia902603.us.archive.org/7/items/1989-azaad-380/1989Azaad380.jpg",
+    "cover_filename": "1989Azaad380.jpg"
+  },
+  {
+    "id": "album_39",
+    "title": "Broken Chain380",
+    "year": "",
+    "cover_url": "https://ia902604.us.archive.org/28/items/broken-chain-380/Broken_Chain380.jpg",
+    "cover_filename": "Broken_Chain380.jpg"
+  },
+  {
+    "id": "album_40",
+    "title": "1986 Khela380",
+    "year": "1986",
+    "cover_url": "https://ia902604.us.archive.org/29/items/1986-khela-380/1986_khela380.jpg",
+    "cover_filename": "1986_khela380.jpg"
+  },
+  {
+    "id": "album_41",
+    "title": "Evin1968",
+    "year": "1968",
+    "cover_url": "https://ia902606.us.archive.org/15/items/evin-1968_202304/Evin1968.jpg",
+    "cover_filename": "Evin1968.jpg"
+  },
+  {
+    "id": "album_42",
+    "title": "1993Spara D Garbia380",
+    "year": "1993",
+    "cover_url": "https://ia902607.us.archive.org/5/items/1993spara-d-garbia-380/1993spara_d_garbia380.jpg",
+    "cover_filename": "1993spara_d_garbia380.jpg"
+  }
+]
